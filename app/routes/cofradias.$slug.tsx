@@ -330,6 +330,9 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
         const esPrimero = index === 0;
         const esUltimo = index === cofradia.titulares.length - 1;
 
+        const mostrarGaleriaTitular =
+          mostrarGalerias && titular.tipo?.toUpperCase() !== "RELIQUIA";
+
         return (
           <section key={titular.id} className="bg-black text-white">
             <div
@@ -421,7 +424,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               </div>
 
               {/* Galería */}
-              {mostrarGalerias && imagenesTitular.length > 0 && (
+              {mostrarGaleriaTitular && imagenesTitular.length > 0 && (
                 <div className="mt-10 border-t border-white/15 pt-10">
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                     {imagenesTitular.map((imagen, imageIndex) => {
