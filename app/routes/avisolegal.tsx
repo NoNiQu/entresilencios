@@ -134,7 +134,33 @@ export default function AvisoLegalPage() {
         </p>
       </InformationSection>
 
-      <InformationSection title="8. Uso de inteligencia artificial">
+      <InformationSection title="8. Fotografías y créditos">
+        <p>
+          Parte del material fotográfico publicado en Entre Silencios es de
+          autoría propia del responsable del proyecto.
+        </p>
+
+        <p>
+          Otras fotografías han sido facilitadas, cedidas o autorizadas para su
+          utilización por cofradías, hermandades, entidades, fotógrafos u otras
+          personas colaboradoras.
+        </p>
+
+        <p>
+          Cuando corresponda, la autoría o procedencia de las imágenes se
+          identificará mediante el nombre, denominación o logotipo de la persona
+          o entidad que haya facilitado el material.
+        </p>
+
+        <p>
+          La aparición de un nombre o logotipo como crédito fotográfico indica
+          la procedencia o colaboración concreta relacionada con ese material y
+          no implica necesariamente patrocinio, representación oficial ni
+          vinculación institucional con Entre Silencios.
+        </p>
+      </InformationSection>
+
+      <InformationSection title="9. Uso de inteligencia artificial">
         <p>
           Durante el diseño y desarrollo de Entre Silencios se han utilizado
           herramientas de inteligencia artificial generativa como apoyo en
@@ -155,7 +181,7 @@ export default function AvisoLegalPage() {
         </p>
       </InformationSection>
 
-      <InformationSection title="9. Enlaces externos">
+      <InformationSection title="10. Enlaces externos">
         <p>
           La web puede contener enlaces a páginas oficiales y a otros sitios
           gestionados por terceros.
@@ -167,14 +193,14 @@ export default function AvisoLegalPage() {
         </p>
       </InformationSection>
 
-      <InformationSection title="10. Modificaciones">
+      <InformationSection title="11. Modificaciones">
         <p>
           Este aviso legal podrá actualizarse cuando cambien las
           funcionalidades, contenidos, proveedores o condiciones del proyecto.
         </p>
       </InformationSection>
 
-      <InformationSection title="11. Legislación aplicable">
+      <InformationSection title="12. Legislación aplicable">
         <p>
           Este aviso legal se interpreta conforme a la legislación española que
           resulte aplicable.

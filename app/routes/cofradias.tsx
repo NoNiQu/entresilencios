@@ -32,7 +32,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
       {cofradias.length === 0 ? (
         <p className="text-black/75">No hay cofradías disponibles.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-16 md:gap-y-20 lg:grid-cols-4 lg:gap-x-12">
+        <div className="-mt-8 grid grid-cols-1 pb-12 sm:mt-0 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-16 sm:pb-0 md:gap-y-20 lg:grid-cols-4 lg:gap-x-12">
           {cofradias.map((cofradia) => (
             <Link
               key={cofradia.id}
