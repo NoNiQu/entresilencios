@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/cofradias.$slug";
 import { getCofradiaPorSlug } from "~/services/cofradias.service";
@@ -161,6 +162,33 @@ function SocialIcon({ tipo }: { tipo: string }) {
 
 export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
   const { cofradia } = loaderData;
+
+  const [imagenAmpliada, setImagenAmpliada] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!imagenAmpliada) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setImagenAmpliada(null);
+      }
+    };
+
+    const overflowAnterior = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = overflowAnterior;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [imagenAmpliada]);
 
   const enlacesSociales = cofradia.enlaces_oficiales.filter((enlace) => {
     const tipo = enlace.tipo.toLowerCase();
@@ -396,18 +424,30 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               {mostrarGalerias && imagenesTitular.length > 0 && (
                 <div className="mt-10 border-t border-white/15 pt-10">
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                    {imagenesTitular.map((imagen, imageIndex) => (
-                      <div
-                        key={imagen}
-                        className="relative aspect-4/6 overflow-hidden bg-white/5"
-                      >
-                        <img
-                          src={imagen}
-                          alt={`${titular.nombre}, imagen ${imageIndex + 1}`}
-                          className="absolute inset-0 h-full w-full object-cover"
-                        />
-                      </div>
-                    ))}
+                    {imagenesTitular.map((imagen, imageIndex) => {
+                      const alt = `${titular.nombre}, imagen ${imageIndex + 1}`;
+
+                      return (
+                        <button
+                          key={imagen}
+                          type="button"
+                          onClick={() =>
+                            setImagenAmpliada({
+                              src: imagen,
+                              alt,
+                            })
+                          }
+                          aria-label={`Ampliar ${alt}`}
+                          className="relative aspect-4/6 cursor-pointer overflow-hidden bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                        >
+                          <img
+                            src={imagen}
+                            alt={alt}
+                            className="absolute inset-0 h-full w-full object-cover"
+                          />
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -430,6 +470,33 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           </div>
         </div>
       </section>
+
+      {/* Imagen ampliada */}
+      {imagenAmpliada && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagen ampliada"
+          className="fixed inset-0 z-100 flex cursor-default items-center justify-center bg-black/95 p-4 md:p-8"
+          onClick={() => setImagenAmpliada(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setImagenAmpliada(null)}
+            aria-label="Cerrar imagen ampliada"
+            className="absolute right-5 top-5 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/25 text-2xl font-light text-white transition-colors duration-200 hover:border-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:right-8 md:top-8"
+          >
+            ×
+          </button>
+
+          <img
+            src={imagenAmpliada.src}
+            alt={imagenAmpliada.alt}
+            onClick={(event) => event.stopPropagation()}
+            className="max-h-[calc(100svh-2rem)] max-w-full cursor-default object-contain md:max-h-[calc(100svh-4rem)]"
+          />
+        </div>
+      )}
     </main>
   );
 }
