@@ -27,7 +27,7 @@ export function HomeHero() {
       </picture>
 
       {/* Oscurecimiento general */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/7" />
 
       {/* Gradiente */}
       <div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/5 to-black/70" />
