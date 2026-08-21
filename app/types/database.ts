@@ -67,6 +67,7 @@ export type Database = {
           historia: string | null
           id: number
           nombre: string
+          nombre_corto: string | null
           publicada: boolean
           sede_canonica_id: number | null
           slug: string
@@ -78,6 +79,7 @@ export type Database = {
           historia?: string | null
           id?: number
           nombre: string
+          nombre_corto?: string | null
           publicada?: boolean
           sede_canonica_id?: number | null
           slug: string
@@ -89,6 +91,7 @@ export type Database = {
           historia?: string | null
           id?: number
           nombre?: string
+          nombre_corto?: string | null
           publicada?: boolean
           sede_canonica_id?: number | null
           slug?: string

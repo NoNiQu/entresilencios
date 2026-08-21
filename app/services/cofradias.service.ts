@@ -9,6 +9,7 @@ export async function getCofradiasPublicadas() {
     .select(`
       id,
       nombre,
+      nombre_corto,
       slug,
       anio_fundacion,
       anio_refundacion,
