@@ -19,6 +19,12 @@ function limpiarTexto(texto: string | null) {
 
 /**
  * Devuelve las cofradías publicadas para listados y tarjetas.
+ *
+ * Se ordenan según su primera procesión de Semana Santa.
+ *
+ * Los traslados no cuentan para determinar el orden.
+ * Si una cofradía participa en varias procesiones,
+ * únicamente se tiene en cuenta la primera.
  */
 export async function getCofradiasPublicadas() {
   const { data, error } = await supabase
@@ -31,39 +37,129 @@ export async function getCofradiasPublicadas() {
       anio_fundacion,
       anio_refundacion,
       escudo_url,
+
       sede:sedes_canonicas (
         id,
         nombre,
         direccion
+      ),
+
+      procesiones (
+        id,
+        tipo,
+        orden_dia,
+        dias_semana_santa (
+          id,
+          nombre,
+          orden
+        )
       )
     `)
     .eq("publicada", true);
 
   if (error) {
-    console.error("Error al obtener las cofradías:", error);
+    console.error(
+      "Error al obtener las cofradías:",
+      error,
+    );
 
     throw new Error(
       "No se han podido cargar las cofradías.",
     );
   }
 
-  return [...(data ?? [])].sort((a, b) => {
-    const anioA =
-      a.anio_refundacion ??
-      a.anio_fundacion ??
-      Number.MAX_SAFE_INTEGER;
+  return (data ?? [])
+    .map((cofradia) => {
+      const {
+        procesiones,
+        ...datosCofradia
+      } = cofradia;
 
-    const anioB =
-      b.anio_refundacion ??
-      b.anio_fundacion ??
-      Number.MAX_SAFE_INTEGER;
+      /**
+       * Quitamos los traslados y buscamos la primera
+       * procesión real de la cofradía.
+       */
+      const primeraProcesion = [
+        ...(procesiones ?? []),
+      ]
+        .filter(
+          (procesion) =>
+            procesion.tipo !== "TRASLADO" &&
+            procesion.dias_semana_santa,
+        )
+        .sort((a, b) => {
+          const ordenDiaA =
+            a.dias_semana_santa?.orden ??
+            Number.MAX_SAFE_INTEGER;
 
-    if (anioA !== anioB) {
-      return anioA - anioB;
-    }
+          const ordenDiaB =
+            b.dias_semana_santa?.orden ??
+            Number.MAX_SAFE_INTEGER;
 
-    return a.nombre.localeCompare(b.nombre, "es");
-  });
+          if (ordenDiaA !== ordenDiaB) {
+            return ordenDiaA - ordenDiaB;
+          }
+
+          return (
+            (a.orden_dia ?? Number.MAX_SAFE_INTEGER) -
+            (b.orden_dia ?? Number.MAX_SAFE_INTEGER)
+          );
+        })[0];
+
+      return {
+        ...datosCofradia,
+
+        orden_primera_procesion:
+          primeraProcesion?.dias_semana_santa?.orden ??
+          Number.MAX_SAFE_INTEGER,
+
+        orden_dia_primera_procesion:
+          primeraProcesion?.orden_dia ??
+          Number.MAX_SAFE_INTEGER,
+      };
+    })
+    .sort((a, b) => {
+      /**
+       * Primero: día de Semana Santa.
+       */
+      if (
+        a.orden_primera_procesion !==
+        b.orden_primera_procesion
+      ) {
+        return (
+          a.orden_primera_procesion -
+          b.orden_primera_procesion
+        );
+      }
+
+      /**
+       * Segundo: orden de la procesión dentro del día.
+       */
+      if (
+        a.orden_dia_primera_procesion !==
+        b.orden_dia_primera_procesion
+      ) {
+        return (
+          a.orden_dia_primera_procesion -
+          b.orden_dia_primera_procesion
+        );
+      }
+
+      /**
+       * Desempate final por nombre.
+       */
+      return a.nombre.localeCompare(
+        b.nombre,
+        "es",
+      );
+    })
+    .map(
+      ({
+        orden_primera_procesion,
+        orden_dia_primera_procesion,
+        ...cofradia
+      }) => cofradia,
+    );
 }
 
 /**
@@ -155,14 +251,19 @@ export async function getCofradiaPorSlug(slug: string) {
   return {
     ...data,
 
-    historia: limpiarTexto(data.historia),
+    historia: limpiarTexto(
+      data.historia,
+    ),
 
-    titulares: data.titulares.map((titular) => ({
-      ...titular,
-      descripcion_breve: limpiarTexto(
-        titular.descripcion_breve,
-      ),
-    })),
+    titulares: data.titulares.map(
+      (titular) => ({
+        ...titular,
+
+        descripcion_breve: limpiarTexto(
+          titular.descripcion_breve,
+        ),
+      }),
+    ),
   };
 }
 
