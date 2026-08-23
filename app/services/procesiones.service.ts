@@ -1,6 +1,23 @@
 import { supabase } from "~/lib/supabase";
 
 /**
+ * Limpia espacios, saltos de línea y caracteres invisibles
+ * al principio y al final de un texto.
+ *
+ * No modifica los espacios ni saltos internos del contenido.
+ */
+function limpiarTexto(texto: string | null) {
+  if (!texto) {
+    return texto;
+  }
+
+  return texto.replace(
+    /^[\s\u00A0\u200B\uFEFF]+|[\s\u00A0\u200B\uFEFF]+$/g,
+    "",
+  );
+}
+
+/**
  * Devuelve las procesiones cuya cofradía está publicada.
  */
 export async function getProcesionesPublicadas() {
@@ -211,6 +228,8 @@ export async function getProcesionPorSlug(slug: string) {
   return {
     ...procesion,
 
+    recorrido: limpiarTexto(procesion.recorrido),
+
     dia: dias_semana_santa,
 
     cofradia: {
@@ -224,7 +243,13 @@ export async function getProcesionPorSlug(slug: string) {
       ...(habitos ?? []),
     ]
       .filter((habito) => habito.activo)
-      .sort((a, b) => a.orden - b.orden),
+      .sort((a, b) => a.orden - b.orden)
+      .map((habito) => ({
+        ...habito,
+        descripcion: limpiarTexto(
+          habito.descripcion,
+        ),
+      })),
 
     acompanamientos_musicales: [
       ...(acompanamientos_musicales ?? []),
@@ -232,7 +257,14 @@ export async function getProcesionPorSlug(slug: string) {
 
     puntos_interes: [
       ...(puntos_interes ?? []),
-    ].sort((a, b) => a.orden - b.orden),
+    ]
+      .sort((a, b) => a.orden - b.orden)
+      .map((punto) => ({
+        ...punto,
+        descripcion_breve: limpiarTexto(
+          punto.descripcion_breve,
+        ),
+      })),
   };
 }
 

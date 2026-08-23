@@ -1,6 +1,23 @@
 import { supabase } from "~/lib/supabase";
 
 /**
+ * Limpia espacios, saltos de línea y caracteres invisibles
+ * al principio y al final de un texto.
+ *
+ * No modifica los espacios ni saltos internos del contenido.
+ */
+function limpiarTexto(texto: string | null) {
+  if (!texto) {
+    return texto;
+  }
+
+  return texto.replace(
+    /^[\s\u00A0\u200B\uFEFF]+|[\s\u00A0\u200B\uFEFF]+$/g,
+    "",
+  );
+}
+
+/**
  * Devuelve las sedes canónicas que pertenecen al menos
  * a una cofradía publicada.
  */
@@ -106,9 +123,21 @@ export async function getSedeCanonicaPorSlug(slug: string) {
   return {
     ...sede,
 
+    descripcion_breve: limpiarTexto(
+      sede.descripcion_breve,
+    ),
+
+    nota_uso_actual: limpiarTexto(
+      sede.nota_uso_actual,
+    ),
+
     horarios: [...(horarios ?? [])]
       .filter((horario) => horario.activo)
-      .sort((a, b) => a.orden - b.orden),
+      .sort((a, b) => a.orden - b.orden)
+      .map((horario) => ({
+        ...horario,
+        texto: limpiarTexto(horario.texto),
+      })),
   };
 }
 
