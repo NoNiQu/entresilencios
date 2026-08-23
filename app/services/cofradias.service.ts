@@ -1,6 +1,23 @@
 import { supabase } from "~/lib/supabase";
 
 /**
+ * Limpia espacios, saltos de línea y caracteres invisibles
+ * al principio y al final de un texto.
+ *
+ * No modifica los espacios ni saltos internos del contenido.
+ */
+function limpiarTexto(texto: string | null) {
+  if (!texto) {
+    return texto;
+  }
+
+  return texto.replace(
+    /^[\s\u00A0\u200B\uFEFF]+|[\s\u00A0\u200B\uFEFF]+$/g,
+    "",
+  );
+}
+
+/**
  * Devuelve las cofradías publicadas para listados y tarjetas.
  */
 export async function getCofradiasPublicadas() {
@@ -131,7 +148,22 @@ export async function getCofradiaPorSlug(slug: string) {
     );
   }
 
-  return data;
+  if (!data) {
+    return null;
+  }
+
+  return {
+    ...data,
+
+    historia: limpiarTexto(data.historia),
+
+    titulares: data.titulares.map((titular) => ({
+      ...titular,
+      descripcion_breve: limpiarTexto(
+        titular.descripcion_breve,
+      ),
+    })),
+  };
 }
 
 export type CofradiaDetalle = NonNullable<
