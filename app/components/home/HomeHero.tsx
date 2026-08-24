@@ -19,7 +19,15 @@ export function HomeHero() {
     >
       {/* Imagen de fondo */}
       <picture>
+        {/* Móvil */}
         <source media="(max-width: 767px)" srcSet="/home/portadamovil.webp" />
+
+        {/* Escritorio: Full HD / 2K */}
+        <source
+          media="(min-width: 768px)"
+          srcSet="/home/portada.webp 1920w, /home/portada_2k.webp 2560w"
+          sizes="100vw"
+        />
 
         <img
           src="/home/portada.webp"

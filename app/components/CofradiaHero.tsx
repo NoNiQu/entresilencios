@@ -5,6 +5,11 @@ export function CofradiaHero({
   imagenDesktop,
   imagenMovil,
 }: CofradiaHeroProps) {
+  const imagenDesktop2K = imagenDesktop.replace(
+    /portada\.webp$/,
+    "portada_2k.webp",
+  );
+
   const scrollToContent = () => {
     const hero = document.getElementById("cofradia-hero");
 
@@ -20,8 +25,17 @@ export function CofradiaHero({
       className="relative h-svh min-h-190 overflow-hidden bg-black text-white md:h-screen"
     >
       {/* Imagen de fondo */}
+      {/* Imagen de fondo */}
       <picture>
+        {/* Móvil */}
         <source media="(max-width: 767px)" srcSet={imagenMovil} />
+
+        {/* Escritorio: Full HD / 2K */}
+        <source
+          media="(min-width: 768px)"
+          srcSet={`${imagenDesktop} 1920w, ${imagenDesktop2K} 2560w`}
+          sizes="100vw"
+        />
 
         <img
           src={imagenDesktop}
