@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function SemanaSantaToledo() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto max-w-360 px-6 py-24 md:px-10 md:py-28 lg:px-20 lg:pt-25 lg:pb-18">
+      <div className="mx-auto max-w-360 px-6 py-24 md:px-10 md:py-28 lg:px-10 lg:pt-25 lg:pb-18">
         {/* Introducción */}
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-10">
           <div>
@@ -37,7 +37,7 @@ export function SemanaSantaToledo() {
         <div className="mt-20 grid gap-16 md:mt-24 md:grid-cols-3 md:gap-3 lg:mt-20">
           <Link
             to="/cofradias"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-10 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
@@ -49,7 +49,7 @@ export function SemanaSantaToledo() {
               className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-black/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
             />
 
-            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl">
+            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">
               Cofradías
             </h2>
 
@@ -65,7 +65,7 @@ export function SemanaSantaToledo() {
 
           <Link
             to="/procesiones"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-10 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
@@ -77,7 +77,7 @@ export function SemanaSantaToledo() {
               className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-black/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
             />
 
-            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl">
+            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">
               Procesiones
             </h2>
 
@@ -93,7 +93,7 @@ export function SemanaSantaToledo() {
 
           <Link
             to="/sedescanonicas"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-10 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
@@ -105,7 +105,7 @@ export function SemanaSantaToledo() {
               className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-black/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
             />
 
-            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl">
+            <h2 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">
               Sedes canónicas
             </h2>
 
