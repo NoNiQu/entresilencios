@@ -401,6 +401,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                     <img
                       src={imagenTitular}
                       alt={titular.nombre}
+                      loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
@@ -495,6 +496,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                           <img
                             src={imagen}
                             alt={alt}
+                            loading="lazy"
                             className="absolute inset-0 h-full w-full object-cover"
                           />
                         </button>

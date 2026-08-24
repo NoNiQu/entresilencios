@@ -212,6 +212,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
                 <img
                   src={`/mapas/${procesion.image_url}.webp`}
                   alt={`Mapa de recorrido de ${procesion.nombre}`}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
