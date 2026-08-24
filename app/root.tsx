@@ -14,6 +14,7 @@ import { Footer } from "~/components/layout/Footer";
 import { Header } from "~/components/layout/Header";
 import "./app.css";
 
+/*
 export const links: Route.LinksFunction = () => [
   {
     rel: "preload",
@@ -23,6 +24,7 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: "anonymous",
   },
 ];
+*/
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
