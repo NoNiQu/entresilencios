@@ -260,7 +260,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           <div className="flex flex-col items-center text-center">
             {cofradia.escudo_url && (
               <img
-                src={`/escudos/${cofradia.escudo_url}`}
+                src={`/escudos/320/${cofradia.escudo_url}`}
                 alt=""
                 className="max-h-40 max-w-32 object-contain md:max-h-44 md:max-w-36"
               />

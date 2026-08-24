@@ -94,7 +94,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
           >
             {procesion.cofradia.escudo_url && (
               <img
-                src={`/escudos/${procesion.cofradia.escudo_url}`}
+                src={`/escudos/160/${procesion.cofradia.escudo_url}`}
                 alt=""
                 className="h-16 w-14 object-contain md:h-20 md:w-16"
               />

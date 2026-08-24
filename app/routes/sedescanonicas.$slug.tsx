@@ -154,7 +154,7 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
                     {cofradia.escudo_url && (
                       <div className="flex h-20 items-center justify-center">
                         <img
-                          src={`/escudos/${cofradia.escudo_url}`}
+                          src={`/escudos/160/${cofradia.escudo_url}`}
                           alt=""
                           className="max-h-18 max-w-16 object-contain"
                         />
