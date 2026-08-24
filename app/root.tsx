@@ -17,7 +17,7 @@ import "./app.css";
 export const links: Route.LinksFunction = () => [
   {
     rel: "preload",
-    href: "/fonts/Inter-VariableFont_opsz,wght.woff2",
+    href: "/fonts/Inter-Variable-Latin.woff2",
     as: "font",
     type: "font/woff2",
     crossOrigin: "anonymous",
