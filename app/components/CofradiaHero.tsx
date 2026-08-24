@@ -7,18 +7,15 @@ export function CofradiaHero({
 }: CofradiaHeroProps) {
   const scrollToContent = () => {
     const hero = document.getElementById("cofradia-hero");
-    const heroWrapper = hero?.parentElement;
-    const nextSection =
-      heroWrapper?.nextElementSibling ?? hero?.nextElementSibling;
 
-    nextSection?.scrollIntoView({
+    hero?.nextElementSibling?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
 
   return (
-    <section
+    <div
       id="cofradia-hero"
       className="relative h-svh min-h-190 overflow-hidden bg-black text-white md:h-screen"
     >
@@ -59,6 +56,6 @@ export function CofradiaHero({
           <path d="M12 17 5.5 9h13L12 17Z" fill="currentColor" />
         </svg>
       </button>
-    </section>
+    </div>
   );
 }

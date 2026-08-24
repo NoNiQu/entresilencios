@@ -69,7 +69,7 @@ export function SemanaSantaCountdown({ countdown }: SemanaSantaCountdownProps) {
   return (
     <section className="bg-black text-white">
       <div className="mx-auto max-w-360 px-6 py-25 md:px-10 md:py-25 lg:px-30 lg:py-35">
-        <h2 className="text-center font-normal tracking-[-0.03em]">
+        <h1 className="text-center font-normal tracking-[-0.03em]">
           <span className="block text-lg leading-none text-white/75 md:text-4xl">
             Esperando nuestra
           </span>
@@ -77,7 +77,7 @@ export function SemanaSantaCountdown({ countdown }: SemanaSantaCountdownProps) {
           <span className="mt-5 block text-[2.2rem] leading-[1.1] md:text-6xl md:leading-[1.02]">
             Semana Santa {countdown.targetYear}
           </span>
-        </h2>
+        </h1>
 
         <div className="mt-16 grid grid-cols-2 md:mt-25 md:grid-cols-4">
           {values.map((item, index) => (

@@ -203,13 +203,11 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
   return (
     <main>
       {/* HERO 1 · PRESENTACIÓN */}
-      <section className="relative min-h-svh overflow-hidden bg-black text-white">
-        <CofradiaHero
-          nombre={cofradia.nombre}
-          imagenDesktop={`/${titularPrincipal?.imagen_url}/portada.webp`}
-          imagenMovil={`/${titularPrincipal?.imagen_url}/portada_movil.webp`}
-        />
-      </section>
+      <CofradiaHero
+        nombre={cofradia.nombre}
+        imagenDesktop={`/${titularPrincipal?.imagen_url}/portada.webp`}
+        imagenMovil={`/${titularPrincipal?.imagen_url}/portada_movil.webp`}
+      />
 
       {/* HERO 2 · COFRADÍA */}
       <section className="flex min-h-svh bg-white text-black">
@@ -232,39 +230,46 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           {/* Datos + historia */}
           <div className="mt-16 grid border-y border-black/15 lg:mt-20 lg:grid-cols-[0.42fr_0.58fr]">
             {/* Datos */}
-            <aside className="border-b border-black/15 py-12 lg:border-b-0 lg:border-r lg:py-14 lg:pr-16">
-              {/* Fundación / Refundación */}
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
-                  {cofradia.anio_refundacion ? "Refundación" : "Fundación"}
-                </p>
+            <aside
+              aria-label="Datos de la cofradía"
+              className="border-b border-black/15 py-12 lg:border-b-0 lg:border-r lg:py-14 lg:pr-16"
+            >
+              <dl className="space-y-12">
+                {/* Fundación / Refundación */}
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+                    {cofradia.anio_refundacion ? "Refundación" : "Fundación"}
+                  </dt>
 
-                <p className="mt-4 text-2xl tracking-[-0.03em] md:text-3xl">
-                  {cofradia.anio_refundacion ??
-                    cofradia.anio_fundacion ??
-                    "Por confirmar"}
-                </p>
-              </div>
+                  <dd className="mt-4 text-2xl tracking-[-0.03em] md:text-3xl">
+                    {cofradia.anio_refundacion ??
+                      cofradia.anio_fundacion ??
+                      "Por confirmar"}
+                  </dd>
+                </div>
 
-              {/* Sede */}
-              <div className="mt-12">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
-                  Sede canónica
-                </p>
+                {/* Sede */}
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+                    Sede canónica
+                  </dt>
 
-                {cofradia.sede ? (
-                  <Link
-                    to={`/sedescanonicas/${cofradia.sede.slug}`}
-                    className="mt-4 inline-block max-w-md text-xl leading-tight tracking-[-0.02em] transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:text-2xl"
-                  >
-                    {cofradia.sede.nombre}
-                  </Link>
-                ) : (
-                  <p className="mt-4 max-w-md text-xl leading-tight tracking-[-0.02em] md:text-2xl">
-                    Por confirmar
-                  </p>
-                )}
-              </div>
+                  <dd>
+                    {cofradia.sede ? (
+                      <Link
+                        to={`/sedescanonicas/${cofradia.sede.slug}`}
+                        className="mt-4 inline-block max-w-md text-xl leading-tight tracking-[-0.02em] transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:text-2xl"
+                      >
+                        {cofradia.sede.nombre}
+                      </Link>
+                    ) : (
+                      <span className="mt-4 block max-w-md text-xl leading-tight tracking-[-0.02em] md:text-2xl">
+                        Por confirmar
+                      </span>
+                    )}
+                  </dd>
+                </div>
+              </dl>
 
               {/* Redes sociales */}
               <div className="mt-12">
@@ -298,9 +303,9 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
 
             {/* Historia */}
             <section className="py-12 lg:py-14 lg:pl-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
                 Historia
-              </p>
+              </h2>
 
               {cofradia.historia ? (
                 <p className="mt-7 max-w-3xl text-base leading-8 text-black/75 md:text-lg md:leading-9">
@@ -364,53 +369,53 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                 </div>
 
                 {/* Información */}
-                <section className="flex flex-col justify-start py-12 lg:min-h-100 lg:pl-16">
+                <div className="flex flex-col justify-start py-12 lg:min-h-100 lg:pl-16">
                   <h2 className="max-w-3xl text-4xl font-normal leading-[1.02] tracking-[-0.03em] md:text-5xl lg:text-6xl">
                     {titular.nombre}
                   </h2>
 
                   {/* Datos */}
-                  <div className="mt-12 space-y-10">
+                  <dl className="mt-12 space-y-10">
                     {/* Año / siglo */}
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                      <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                         {titular.anio_realizacion
                           ? "Año"
                           : titular.siglo_realizacion
                             ? "Siglo"
                             : "Año"}
-                      </p>
+                      </dt>
 
-                      <p className="mt-3 text-xl">
+                      <dd className="mt-3 text-xl">
                         {titular.anio_realizacion ??
                           titular.siglo_realizacion ??
                           "No especificado"}
-                      </p>
+                      </dd>
                     </div>
 
                     {/* Autor */}
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                      <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                         Autor
-                      </p>
+                      </dt>
 
-                      <p className="mt-3 text-xl">
+                      <dd className="mt-3 text-xl">
                         {titular.autor ?? "Anónimo"}
-                      </p>
+                      </dd>
                     </div>
 
                     {titular.tipo_paso && (
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                        <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                           Tipo de paso
-                        </p>
+                        </dt>
 
-                        <p className="mt-3 text-xl">
+                        <dd className="mt-3 text-xl">
                           {formatTipoPaso(titular.tipo_paso)}
-                        </p>
+                        </dd>
                       </div>
                     )}
-                  </div>
+                  </dl>
 
                   {/* Descripción */}
                   {titular.descripcion_breve && (
@@ -420,7 +425,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                       </p>
                     </div>
                   )}
-                </section>
+                </div>
               </div>
 
               {/* Galería */}
@@ -460,7 +465,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
       })}
 
       {/* Volver */}
-      <section className="bg-black text-white">
+      <div className="bg-black text-white">
         <div className="mx-auto max-w-360 px-6 pb-12 md:px-10 lg:px-30">
           <div className="border-t border-white/15 pt-6">
             <Link
@@ -472,7 +477,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Imagen ampliada */}
       {imagenAmpliada && (

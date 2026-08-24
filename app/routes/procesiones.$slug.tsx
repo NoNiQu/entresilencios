@@ -77,16 +77,16 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      {/* Día */}
+      {/* H1 · Día */}
       <PageTitleHeader title={procesion.dia?.nombre ?? "Por confirmar"} />
 
       {/* Información */}
       <div className="mx-auto mt-6 max-w-360 px-6 pb-10 md:mt-8 md:px-10 md:pb-14 lg:mt-10 lg:px-30 lg:pb-27">
         {/* Cofradía */}
         <section className="border-t border-white/15 pt-10 pb-4 md:pt-12 md:pb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
             Cofradía
-          </p>
+          </h2>
 
           <Link
             to={`/cofradias/${procesion.cofradia.slug}`}
@@ -110,9 +110,9 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
         <div className="grid md:grid-cols-[0.35fr_0.65fr]">
           {/* Horarios */}
           <section className="relative border-b border-white/15 pt-6 pb-10 md:border-b-0 md:pr-12 lg:pt-8 lg:pb-12 lg:after:absolute lg:after:bottom-8 lg:after:right-0 lg:after:top-8 lg:after:w-px lg:after:bg-white/15">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               Horarios
-            </p>
+            </h2>
 
             <div className="mt-6 space-y-4">
               <div>
@@ -139,9 +139,9 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
 
           {/* Recorrido */}
           <section className="pt-6 pb-10 md:pl-12 lg:pt-8 lg:pb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               Recorrido
-            </p>
+            </h2>
 
             {procesion.recorrido ? (
               <p className="mt-6 max-w-4xl text-sm leading-7 text-white/75 md:text-base md:leading-8">
@@ -158,9 +158,9 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
         {/* Puntos de interés */}
         {procesion.puntos_interes.length > 0 && (
           <section className="border-t border-white/15 py-10 md:py-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               Puntos de interés
-            </p>
+            </h2>
 
             <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {procesion.puntos_interes.map((punto, index) => (
@@ -178,9 +178,9 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
                     </p>
                   </div>
 
-                  <h2 className="mt-4 max-w-sm text-xl font-normal leading-tight tracking-[-0.02em] md:text-2xl">
+                  <h3 className="mt-4 max-w-sm text-xl font-normal leading-tight tracking-[-0.02em] md:text-2xl">
                     {punto.nombre}
-                  </h2>
+                  </h3>
 
                   {punto.direccion && (
                     <p className="mt-4 text-sm leading-6 text-white/75">
@@ -194,7 +194,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
         )}
 
         {/* Mapa + hábitos */}
-        <section className="border-t border-white/15 pt-10 md:pt-12">
+        <div className="border-t border-white/15 pt-10 md:pt-12">
           <div
             className={
               procesion.habitos.length > 0
@@ -203,7 +203,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
             }
           >
             {/* Mapa */}
-            <div>
+            <section>
               <h2 className="text-2xl font-normal leading-tight tracking-[-0.03em] md:text-3xl">
                 Mapa del recorrido
               </h2>
@@ -215,11 +215,11 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
                   className="h-full w-full object-cover"
                 />
               </div>
-            </div>
+            </section>
 
             {/* Hábitos */}
             {procesion.habitos.length > 0 && (
-              <div>
+              <section>
                 <h2 className="text-2xl font-normal leading-tight tracking-[-0.03em] md:text-3xl">
                   {procesion.habitos.length === 1 ? "Hábito" : "Hábitos"}
                 </h2>
@@ -250,21 +250,21 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
                     );
                   })}
                 </div>
-              </div>
+              </section>
             )}
           </div>
-        </section>
+        </div>
 
         {/* Aviso */}
-        <section className="mt-12 border-t border-white/15 pt-8 flex flex-col items-center">
-          <p className="max-w-4xl text-sm leading-6 text-white/60 text-center">
+        <aside className="mt-12 flex flex-col items-center border-t border-white/15 pt-8">
+          <p className="max-w-4xl text-center text-sm leading-6 text-white/60">
             Los horarios, recorridos y demás información pueden sufrir
             modificaciones de última hora.
             <br />
             En caso de cancelación, retrasos o cambios por causas meteorológicas
             u otras circunstancias, consulta fuentes oficiales.
           </p>
-        </section>
+        </aside>
 
         {/* Volver */}
         <div className="mt-12 border-t border-white/15 pt-6">

@@ -9,7 +9,7 @@ export function HomeHero() {
   };
 
   return (
-    <section
+    <div
       id="home-hero"
       className="relative h-svh min-h-190 overflow-hidden bg-black text-white md:h-screen"
     >
@@ -51,6 +51,6 @@ export function HomeHero() {
           <path d="M12 17 5.5 9h13L12 17Z" fill="currentColor" />
         </svg>
       </button>
-    </section>
+    </div>
   );
 }

@@ -78,9 +78,9 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
         <div className="grid border-y border-white/15 lg:mt-4 lg:grid-cols-2">
           {/* Descripción */}
           <section className="relative min-h-64 border-b border-white/15 py-10 lg:min-h-72 lg:border-b-0 lg:pr-16 lg:after:absolute lg:after:bottom-8 lg:after:right-0 lg:after:top-8 lg:after:w-px lg:after:bg-white/15">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               Descripción
-            </p>
+            </h2>
 
             {sede.descripcion_breve ? (
               <p className="mt-6 max-w-2xl text-sm leading-7 text-white/75 md:text-base md:leading-8">
@@ -96,9 +96,9 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
 
           {/* Horarios */}
           <section className="min-h-64 py-10 lg:min-h-72 lg:pl-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               {getTituloHorarios(sede.uso_actual)}
-            </p>
+            </h2>
 
             {sede.horarios.length > 0 ? (
               <div className="mt-6 space-y-7">
@@ -136,31 +136,38 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
 
         {/* Cofradías */}
         <section className="border-b border-white/15 py-10 md:py-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
             Cofradías con sede canónica aquí
-          </p>
+          </h2>
 
-          {sede.cofradias.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-8">
+          {sede.cofradias.length > 0 ? (
+            <ul className="mt-8 flex flex-wrap gap-8">
               {sede.cofradias.map((cofradia) => (
-                <Link
-                  key={cofradia.id}
-                  to={`/cofradias/${cofradia.slug}`}
-                  title={cofradia.nombre}
-                  className="group flex w-24 flex-col items-center text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                >
-                  {cofradia.escudo_url && (
-                    <div className="flex h-20 items-center justify-center">
-                      <img
-                        src={`/escudos/${cofradia.escudo_url}`}
-                        alt={`Escudo de ${cofradia.nombre}`}
-                        className="max-h-18 max-w-16 object-contain"
-                      />
-                    </div>
-                  )}
-                </Link>
+                <li key={cofradia.id}>
+                  <Link
+                    to={`/cofradias/${cofradia.slug}`}
+                    title={cofradia.nombre}
+                    className="group flex w-24 flex-col items-center text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  >
+                    <span className="sr-only">{cofradia.nombre}</span>
+
+                    {cofradia.escudo_url && (
+                      <div className="flex h-20 items-center justify-center">
+                        <img
+                          src={`/escudos/${cofradia.escudo_url}`}
+                          alt=""
+                          className="max-h-18 max-w-16 object-contain"
+                        />
+                      </div>
+                    )}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
+          ) : (
+            <p className="mt-6 text-sm leading-7 text-white/75">
+              Actualmente no hay cofradías vinculadas a esta sede canónica.
+            </p>
           )}
         </section>
 
