@@ -36,9 +36,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
 
       <body>
+        <a
+          id="skip-to-content"
+          href="#site-content"
+          className="fixed left-4 top-4 z-999 -translate-y-24 bg-black px-4 py-3 text-sm font-medium text-white transition-transform focus:translate-y-0 focus:outline-2 focus:outline-offset-4 focus:outline-white"
+        >
+          Saltar al contenido principal
+        </a>
+
         <Header />
 
-        {children}
+        <div id="site-content" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
 
         <div id="site-footer">
           <Footer />
@@ -83,7 +93,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main className="bg-white text-black">
       <section className="mx-auto flex min-h-[75svh] max-w-360 items-center px-6 py-32 md:px-10 lg:px-30">
         <div className="w-full">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/50">
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
             {isNotFound ? "Página no encontrada" : "Error del servidor"}
           </p>
 
@@ -109,7 +119,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
                 <div className="mt-10">
                   <Link
                     to="/"
-                    className="group inline-flex cursor-pointer items-center gap-4 border-b border-black/25 pb-2 text-sm font-medium transition-colors duration-300 hover:border-black"
+                    className="group inline-flex cursor-pointer items-center gap-4 border-b border-black/25 pb-2 text-sm font-medium transition-colors duration-300 hover:border-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
                   >
                     Volver al inicio
                     <span
@@ -126,7 +136,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
           {stack && (
             <details className="mt-16 border-t border-black/15 pt-6">
-              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.2em] text-black/50">
+              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
                 Detalles técnicos
               </summary>
 

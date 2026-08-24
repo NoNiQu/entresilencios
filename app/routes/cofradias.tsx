@@ -45,7 +45,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                 {cofradia.escudo_url ? (
                   <img
                     src={`/escudos/${cofradia.escudo_url}`}
-                    alt={`Escudo de ${cofradia.nombre}`}
+                    alt=""
                     className="max-h-24 max-w-24 object-contain sm:max-h-36 sm:max-w-28 md:max-h-40 md:max-w-32"
                   />
                 ) : (

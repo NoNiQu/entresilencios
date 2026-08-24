@@ -35,9 +35,13 @@ export function Footer() {
           {/* Marca y descripción */}
           <div className="self-start">
             {isHomePage ? (
-              <div aria-label="Entre Silencios">{logo}</div>
+              <div>{logo}</div>
             ) : (
-              <Link to="/" aria-label="Volver a la página de inicio">
+              <Link
+                to="/"
+                aria-label="Volver a la página de inicio"
+                className="inline-block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
                 {logo}
               </Link>
             )}

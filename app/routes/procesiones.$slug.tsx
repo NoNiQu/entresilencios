@@ -95,7 +95,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
             {procesion.cofradia.escudo_url && (
               <img
                 src={`/escudos/${procesion.cofradia.escudo_url}`}
-                alt={`Escudo de ${procesion.cofradia.nombre}`}
+                alt=""
                 className="h-16 w-14 object-contain md:h-20 md:w-16"
               />
             )}
@@ -169,7 +169,7 @@ export default function ProcesionPage({ loaderData }: Route.ComponentProps) {
                   className="flex flex-col items-center justify-center rounded-lg p-7"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs tabular-nums text-white/40">
+                    <span className="text-xs tabular-nums text-white/60">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 

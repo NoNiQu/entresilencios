@@ -119,18 +119,29 @@ export function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+
+    document.getElementById("site-content")?.focus({
+      preventScroll: true,
     });
   };
 
   return (
     <button
+      id="scroll-to-top"
       ref={buttonRef}
       type="button"
       onClick={scrollToTop}
       aria-label="Volver al inicio de la página"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
       className={[
         "fixed bottom-5 right-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border",
         "transition-[opacity,background-color,color,border-color] duration-300",

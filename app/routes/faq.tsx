@@ -101,7 +101,7 @@ export default function FaqPage() {
               key={item.question}
               className="group border-b border-black/15"
             >
-              <summary className="flex min-h-24 cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-base font-medium leading-6 text-black marker:hidden">
+              <summary className="flex min-h-24 cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-base font-medium leading-6 text-black marker:hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black">
                 <span>{item.question}</span>
 
                 <span

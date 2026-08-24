@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/cofradias.$slug";
 import { getCofradiaPorSlug } from "~/services/cofradias.service";
@@ -168,25 +168,69 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
     alt: string;
   } | null>(null);
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeDialogButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!imagenAmpliada) {
       return;
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setImagenAmpliada(null);
-      }
-    };
+    const previouslyFocusedElement =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
 
     const overflowAnterior = document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+      closeDialogButtonRef.current?.focus();
+    });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setImagenAmpliada(null);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.style.overflow = overflowAnterior;
       document.removeEventListener("keydown", handleKeyDown);
+
+      if (previouslyFocusedElement?.isConnected) {
+        previouslyFocusedElement.focus();
+      }
     };
   }, [imagenAmpliada]);
 
@@ -217,7 +261,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
             {cofradia.escudo_url && (
               <img
                 src={`/escudos/${cofradia.escudo_url}`}
-                alt={`Escudo de ${cofradia.nombre}`}
+                alt=""
                 className="max-h-40 max-w-32 object-contain md:max-h-44 md:max-w-36"
               />
             )}
@@ -433,7 +477,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                 <div className="mt-10 border-t border-white/15 pt-10">
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                     {imagenesTitular.map((imagen, imageIndex) => {
-                      const alt = `${titular.nombre}, imagen ${imageIndex + 1}`;
+                      const alt = `Fotografía ${imageIndex + 1} de ${titular.nombre}`;
 
                       return (
                         <button
@@ -482,6 +526,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
       {/* Imagen ampliada */}
       {imagenAmpliada && (
         <div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label="Imagen ampliada"
@@ -489,6 +534,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           onClick={() => setImagenAmpliada(null)}
         >
           <button
+            ref={closeDialogButtonRef}
             type="button"
             onClick={() => setImagenAmpliada(null)}
             aria-label="Cerrar imagen ampliada"

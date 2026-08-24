@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
 const navigation = [
@@ -14,6 +14,7 @@ export function Header() {
   const isHomePage = pathname === "/";
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   /*
    * Cierra el menú cuando el usuario cambia de página.
@@ -33,11 +34,26 @@ export function Header() {
 
     const previousOverflow = document.body.style.overflow;
 
+    const inertElements = [
+      document.getElementById("skip-to-content"),
+      document.getElementById("site-content"),
+      document.getElementById("site-footer"),
+      document.getElementById("scroll-to-top"),
+    ].filter((element): element is HTMLElement => element !== null);
+
     document.body.style.overflow = "hidden";
+
+    inertElements.forEach((element) => {
+      element.setAttribute("inert", "");
+    });
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
+
+        requestAnimationFrame(() => {
+          menuButtonRef.current?.focus();
+        });
       }
     };
 
@@ -45,6 +61,11 @@ export function Header() {
 
     return () => {
       document.body.style.overflow = previousOverflow;
+
+      inertElements.forEach((element) => {
+        element.removeAttribute("inert");
+      });
+
       window.removeEventListener("keydown", handleEscape);
     };
   }, [isMenuOpen]);
@@ -78,11 +99,13 @@ export function Header() {
         <div className="hidden lg:block">
           <div className="mx-auto flex h-45 max-w-1440px items-center justify-between px-45">
             {isHomePage ? (
-              <div aria-label="Entre Silencios, página de inicio">
-                {desktopLogo}
-              </div>
+              <div>{desktopLogo}</div>
             ) : (
-              <Link to="/" aria-label="Volver a la página de inicio">
+              <Link
+                to="/"
+                aria-label="Volver a la página de inicio"
+                className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
                 {desktopLogo}
               </Link>
             )}
@@ -119,6 +142,7 @@ export function Header() {
         {/* CABECERA MÓVIL */}
         <div className="grid h-45 grid-cols-[48px_1fr_48px] items-center px-5 lg:hidden">
           <button
+            ref={menuButtonRef}
             type="button"
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isMenuOpen}
@@ -157,9 +181,7 @@ export function Header() {
 
           <div className="justify-self-center">
             {isHomePage ? (
-              <div aria-label="Entre Silencios, página de inicio">
-                {mobileLogo}
-              </div>
+              <div>{mobileLogo}</div>
             ) : (
               <Link
                 to="/"

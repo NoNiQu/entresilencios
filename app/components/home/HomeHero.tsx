@@ -2,8 +2,12 @@ export function HomeHero() {
   const scrollToContent = () => {
     const hero = document.getElementById("home-hero");
 
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     hero?.nextElementSibling?.scrollIntoView({
-      behavior: "smooth",
+      behavior: reduceMotion ? "auto" : "smooth",
       block: "start",
     });
   };

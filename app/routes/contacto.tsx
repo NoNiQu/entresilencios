@@ -20,7 +20,7 @@ export default function ContactoPage() {
   return (
     <>
       <main className="relative min-h-screen bg-black text-white">
-        <div className="mx-auto flex min-h-screen max-w-360 flex-col justify-start px-5 pb-10 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40 lg:justify-center lg:px-30">
+        <div className="mx-auto flex min-h-screen max-w-360 flex-col justify-start px-5 pb-20 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40 lg:justify-center lg:px-30">
           <div className="grid w-full gap-16 md:gap-16 lg:grid-cols-2 lg:items-stretch">
             {/* Columna izquierda */}
             <section className="mt-9 flex max-w-xl flex-col md:mt-0">

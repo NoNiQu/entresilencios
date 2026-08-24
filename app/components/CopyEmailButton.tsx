@@ -38,7 +38,7 @@ export function CopyEmailButton() {
           type="button"
           onClick={handleCopyEmail}
           aria-label={`Copiar correo electrónico ${siteConfig.email}`}
-          className="flex w-12 shrink-0 cursor-pointer items-center justify-center border-l border-white/15 transition-colors duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:w-14"
+          className="flex w-12 shrink-0 cursor-pointer items-center justify-center border-l border-white/15 transition-colors duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white md:w-14"
         >
           {status === "copied" ? <CheckIcon /> : <CopyIcon />}
         </button>
