@@ -3,14 +3,14 @@ import { Link } from "react-router";
 export function SemanaSantaToledo() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto max-w-360 px-6 py-24 md:px-10 md:py-28 lg:px-10 lg:pt-28 lg:pb-18">
+      <div className="mx-auto max-w-360 px-6 pt-20 pb-16 md:px-10 md:py-28 lg:px-10 lg:pt-28 lg:pb-18">
         {/* Introducción */}
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-10">
+        <div className="grid gap-16 md:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-10">
           <div>
             <h2 className="max-w-4xl text-[2.6rem] font-normal leading-[1.02] tracking-[-0.03em] md:text-6xl md:leading-[0.98]">
               Cuando la ciudad
               <br />
-              guarda silencio.
+              guarda silencio
             </h2>
           </div>
 
@@ -34,7 +34,7 @@ export function SemanaSantaToledo() {
         </div>
 
         {/* Explorar */}
-        <div className="mt-20 grid gap-16 md:mt-24 md:grid-cols-3 md:gap-3 lg:mt-28">
+        <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-3 md:gap-3 lg:mt-28">
           <Link
             to="/cofradias"
             className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"

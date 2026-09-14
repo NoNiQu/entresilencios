@@ -2,6 +2,7 @@ import type { Route } from "./+types/home";
 import { HomeHero } from "~/components/home/HomeHero";
 import { SemanaSantaCountdown } from "~/components/home/SemanaSantaCountdown";
 import { SemanaSantaToledo } from "~/components/home/SemanaSantaToledo";
+import { Agradecimientos } from "~/components/home/Agradecimiento";
 import { getHomeCountdownData } from "~/utils/semanaSanta";
 
 export function meta({}: Route.MetaArgs) {
