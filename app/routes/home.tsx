@@ -32,8 +32,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       <SemanaSantaToledo />
 
+      <Agradecimientos />
+
       <div className="bg-black text-white">
-        <div className="mx-auto max-w-360 px-6 pt-16 pb-6 md:px-10 md:pt-20 md:pb-8 lg:px-30 lg:pt-24 lg:pb-10">
+        <div className="mx-auto max-w-360 px-6 pt-10 pb-6 md:px-10 md:pt-12 md:pb-8 lg:px-30 lg:pt-10 lg:pb-10">
           <div className="border-b border-white/15 pb-16 md:pb-20 lg:pb-24">
             <p className="mx-auto max-w-4xl text-center text-[2.6rem] font-normal leading-[1.02] tracking-[-0.03em] md:text-6xl md:leading-[0.98]">
               Entre silencios y horquillas,

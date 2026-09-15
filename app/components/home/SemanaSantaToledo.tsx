@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function SemanaSantaToledo() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto max-w-360 px-6 pt-20 pb-16 md:px-10 md:py-28 lg:px-10 lg:pt-28 lg:pb-18">
+      <div className="mx-auto max-w-360 px-6 pt-20 pb-16 md:px-10 md:py-28 lg:flex lg:min-h-svh lg:flex-col lg:justify-center lg:px-10 lg:py-18">
         {/* Introducción */}
         <div className="grid gap-16 md:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:px-10">
           <div>

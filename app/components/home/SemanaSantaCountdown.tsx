@@ -114,7 +114,7 @@ export function SemanaSantaCountdown({ countdown }: SemanaSantaCountdownProps) {
 
               <div className="flex items-center justify-center">
                 <a
-                  href="URL_DE_LA_WEB_DE_GLORIAS"
+                  href="https://gloriaviva.vercel.app/"
                   aria-label="Visitar Gloria Viva"
                   className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >

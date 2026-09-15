@@ -21,6 +21,7 @@ export type Database = {
           orden: number
           posicion: string | null
           procedencia: string | null
+          procesion_gloria_id: number | null
           procesion_id: number
           tipo_formacion: string | null
         }
@@ -30,6 +31,7 @@ export type Database = {
           orden?: number
           posicion?: string | null
           procedencia?: string | null
+          procesion_gloria_id?: number | null
           procesion_id: number
           tipo_formacion?: string | null
         }
@@ -39,10 +41,18 @@ export type Database = {
           orden?: number
           posicion?: string | null
           procedencia?: string | null
+          procesion_gloria_id?: number | null
           procesion_id?: number
           tipo_formacion?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "acompanamientos_musicales_procesion_gloria_id_fkey"
+            columns: ["procesion_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "procesiones_glorias"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "acompanamientos_musicales_procesion_id_fkey"
             columns: ["procesion_id"]
@@ -106,6 +116,86 @@ export type Database = {
           },
         ]
       }
+      cultos_glorias: {
+        Row: {
+          activo: boolean
+          descripcion: string | null
+          desplazamiento_dias: number
+          desplazamiento_semanas: number
+          dia_semana_fin: number | null
+          duracion_dias: number
+          festividad: string | null
+          festividad_dia: number | null
+          festividad_mes: number | null
+          fuente_url: string | null
+          gloria_id: number
+          horario: string | null
+          id: number
+          lugar: string | null
+          nombre: string
+          orden: number
+          ordinal_semana: number | null
+          referencia_liturgica: string | null
+          regla_fecha: string
+          tipo_culto: string
+          verificado_en: string | null
+        }
+        Insert: {
+          activo?: boolean
+          descripcion?: string | null
+          desplazamiento_dias?: number
+          desplazamiento_semanas?: number
+          dia_semana_fin?: number | null
+          duracion_dias?: number
+          festividad?: string | null
+          festividad_dia?: number | null
+          festividad_mes?: number | null
+          fuente_url?: string | null
+          gloria_id: number
+          horario?: string | null
+          id?: number
+          lugar?: string | null
+          nombre: string
+          orden?: number
+          ordinal_semana?: number | null
+          referencia_liturgica?: string | null
+          regla_fecha?: string
+          tipo_culto: string
+          verificado_en?: string | null
+        }
+        Update: {
+          activo?: boolean
+          descripcion?: string | null
+          desplazamiento_dias?: number
+          desplazamiento_semanas?: number
+          dia_semana_fin?: number | null
+          duracion_dias?: number
+          festividad?: string | null
+          festividad_dia?: number | null
+          festividad_mes?: number | null
+          fuente_url?: string | null
+          gloria_id?: number
+          horario?: string | null
+          id?: number
+          lugar?: string | null
+          nombre?: string
+          orden?: number
+          ordinal_semana?: number | null
+          referencia_liturgica?: string | null
+          regla_fecha?: string
+          tipo_culto?: string
+          verificado_en?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cultos_glorias_gloria_id_fkey"
+            columns: ["gloria_id"]
+            isOneToOne: false
+            referencedRelation: "glorias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       dias_semana_santa: {
         Row: {
           desplazamiento_resurreccion: number
@@ -130,7 +220,8 @@ export type Database = {
       enlaces_oficiales: {
         Row: {
           activo: boolean
-          cofradia_id: number
+          cofradia_id: number | null
+          gloria_id: number | null
           id: number
           nombre_usuario: string | null
           orden: number
@@ -139,7 +230,8 @@ export type Database = {
         }
         Insert: {
           activo?: boolean
-          cofradia_id: number
+          cofradia_id?: number | null
+          gloria_id?: number | null
           id?: number
           nombre_usuario?: string | null
           orden?: number
@@ -148,7 +240,8 @@ export type Database = {
         }
         Update: {
           activo?: boolean
-          cofradia_id?: number
+          cofradia_id?: number | null
+          gloria_id?: number | null
           id?: number
           nombre_usuario?: string | null
           orden?: number
@@ -170,6 +263,63 @@ export type Database = {
             referencedRelation: "v_calendario_procesiones"
             referencedColumns: ["cofradia_id"]
           },
+          {
+            foreignKeyName: "enlaces_oficiales_gloria_id_fkey"
+            columns: ["gloria_id"]
+            isOneToOne: false
+            referencedRelation: "glorias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      glorias: {
+        Row: {
+          anio_fundacion: number | null
+          anio_refundacion: number | null
+          devocion_popular: boolean
+          escudo_url: string | null
+          historia: string | null
+          id: number
+          nombre: string
+          nombre_corto: string | null
+          publicada: boolean
+          sede_canonica_id: number | null
+          slug: string
+        }
+        Insert: {
+          anio_fundacion?: number | null
+          anio_refundacion?: number | null
+          devocion_popular?: boolean
+          escudo_url?: string | null
+          historia?: string | null
+          id?: number
+          nombre: string
+          nombre_corto?: string | null
+          publicada?: boolean
+          sede_canonica_id?: number | null
+          slug: string
+        }
+        Update: {
+          anio_fundacion?: number | null
+          anio_refundacion?: number | null
+          devocion_popular?: boolean
+          escudo_url?: string | null
+          historia?: string | null
+          id?: number
+          nombre?: string
+          nombre_corto?: string | null
+          publicada?: boolean
+          sede_canonica_id?: number | null
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "glorias_sede_canonica_id_fkey"
+            columns: ["sede_canonica_id"]
+            isOneToOne: false
+            referencedRelation: "sedes_canonicas"
+            referencedColumns: ["id"]
+          },
         ]
       }
       habitos: {
@@ -181,6 +331,7 @@ export type Database = {
           image_url: string | null
           nombre: string | null
           orden: number
+          procesion_gloria_id: number | null
           procesion_id: number
         }
         Insert: {
@@ -191,6 +342,7 @@ export type Database = {
           image_url?: string | null
           nombre?: string | null
           orden?: number
+          procesion_gloria_id?: number | null
           procesion_id: number
         }
         Update: {
@@ -201,9 +353,17 @@ export type Database = {
           image_url?: string | null
           nombre?: string | null
           orden?: number
+          procesion_gloria_id?: number | null
           procesion_id?: number
         }
         Relationships: [
+          {
+            foreignKeyName: "habitos_procesion_gloria_id_fkey"
+            columns: ["procesion_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "procesiones_glorias"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "habitos_procesion_id_fkey"
             columns: ["procesion_id"]
@@ -298,6 +458,39 @@ export type Database = {
           },
         ]
       }
+      procesion_titulares_glorias: {
+        Row: {
+          orden: number
+          procesion_gloria_id: number
+          titular_gloria_id: number
+        }
+        Insert: {
+          orden?: number
+          procesion_gloria_id: number
+          titular_gloria_id: number
+        }
+        Update: {
+          orden?: number
+          procesion_gloria_id?: number
+          titular_gloria_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "procesion_titulares_glorias_procesion_gloria_id_fkey"
+            columns: ["procesion_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "procesiones_glorias"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "procesion_titulares_glorias_titular_gloria_id_fkey"
+            columns: ["titular_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "titulares_glorias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       procesiones: {
         Row: {
           cofradia_id: number
@@ -384,6 +577,74 @@ export type Database = {
           },
         ]
       }
+      procesiones_glorias: {
+        Row: {
+          activa: boolean
+          ambito: string
+          culto_gloria_id: number
+          dia_culto: number | null
+          fuente_url: string | null
+          hora_entrada: string | null
+          hora_salida: string | null
+          id: number
+          image_url: string | null
+          lugar_entrada: string | null
+          lugar_salida: string | null
+          nombre: string
+          observaciones: string | null
+          orden: number
+          recorrido: string | null
+          slug: string
+          verificado_en: string | null
+        }
+        Insert: {
+          activa?: boolean
+          ambito?: string
+          culto_gloria_id: number
+          dia_culto?: number | null
+          fuente_url?: string | null
+          hora_entrada?: string | null
+          hora_salida?: string | null
+          id?: number
+          image_url?: string | null
+          lugar_entrada?: string | null
+          lugar_salida?: string | null
+          nombre: string
+          observaciones?: string | null
+          orden?: number
+          recorrido?: string | null
+          slug: string
+          verificado_en?: string | null
+        }
+        Update: {
+          activa?: boolean
+          ambito?: string
+          culto_gloria_id?: number
+          dia_culto?: number | null
+          fuente_url?: string | null
+          hora_entrada?: string | null
+          hora_salida?: string | null
+          id?: number
+          image_url?: string | null
+          lugar_entrada?: string | null
+          lugar_salida?: string | null
+          nombre?: string
+          observaciones?: string | null
+          orden?: number
+          recorrido?: string | null
+          slug?: string
+          verificado_en?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "procesiones_glorias_culto_gloria_id_fkey"
+            columns: ["culto_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "cultos_glorias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       puntos_interes: {
         Row: {
           descripcion_breve: string | null
@@ -392,6 +653,7 @@ export type Database = {
           id: number
           nombre: string
           orden: number
+          procesion_gloria_id: number | null
           procesion_id: number
           tipo: string
         }
@@ -402,6 +664,7 @@ export type Database = {
           id?: number
           nombre: string
           orden?: number
+          procesion_gloria_id?: number | null
           procesion_id: number
           tipo: string
         }
@@ -412,10 +675,18 @@ export type Database = {
           id?: number
           nombre?: string
           orden?: number
+          procesion_gloria_id?: number | null
           procesion_id?: number
           tipo?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "puntos_interes_procesion_gloria_id_fkey"
+            columns: ["procesion_gloria_id"]
+            isOneToOne: false
+            referencedRelation: "procesiones_glorias"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "puntos_recorrido_procesion_id_fkey"
             columns: ["procesion_id"]
@@ -528,6 +799,59 @@ export type Database = {
           },
         ]
       }
+      titulares_glorias: {
+        Row: {
+          advocacion: string | null
+          anio_realizacion: number | null
+          autor: string | null
+          descripcion_breve: string | null
+          gloria_id: number
+          id: number
+          imagen_url: string | null
+          nombre: string
+          orden: number
+          siglo_realizacion: string | null
+          tipo: string | null
+          tipo_paso: string | null
+        }
+        Insert: {
+          advocacion?: string | null
+          anio_realizacion?: number | null
+          autor?: string | null
+          descripcion_breve?: string | null
+          gloria_id: number
+          id?: number
+          imagen_url?: string | null
+          nombre: string
+          orden?: number
+          siglo_realizacion?: string | null
+          tipo?: string | null
+          tipo_paso?: string | null
+        }
+        Update: {
+          advocacion?: string | null
+          anio_realizacion?: number | null
+          autor?: string | null
+          descripcion_breve?: string | null
+          gloria_id?: number
+          id?: number
+          imagen_url?: string | null
+          nombre?: string
+          orden?: number
+          siglo_realizacion?: string | null
+          tipo?: string | null
+          tipo_paso?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "titulares_glorias_gloria_id_fkey"
+            columns: ["gloria_id"]
+            isOneToOne: false
+            referencedRelation: "glorias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       v_calendario_procesiones: {
@@ -576,12 +900,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -605,11 +929,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -630,11 +954,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -655,11 +979,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -672,11 +996,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
