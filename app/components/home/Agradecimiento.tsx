@@ -68,14 +68,14 @@ export function Agradecimientos() {
             <div className="grid content-center gap-5 md:gap-10">
               <Link
                 to="/contacto"
-                className="flex min-h-22 items-center justify-center rounded-2xl border border-white/15 bg-black px-5 py-5 text-center text-xl font-normal leading-tight tracking-[-0.03em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:min-h-24 md:px-6 md:py-6 md:text-2xl lg:text-3xl"
+                className="flex min-h-22 items-center justify-center rounded-2xl border border-white bg-white px-5 py-5 text-center text-xl font-normal leading-tight tracking-[-0.03em] text-black transition-colors duration-300 hover:border-white/75 hover:bg-white/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:min-h-24 md:px-6 md:py-6 md:text-2xl lg:text-3xl"
               >
                 Contacto
               </Link>
 
               <Link
                 to="/faq"
-                className="flex min-h-22 items-center justify-center rounded-2xl border border-white/15 bg-black px-5 py-5 text-center text-xl font-normal leading-tight tracking-[-0.03em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:min-h-24 md:px-6 md:py-6 md:text-2xl lg:text-3xl"
+                className="flex min-h-22 items-center justify-center rounded-2xl border border-white bg-white px-5 py-5 text-center text-xl font-normal leading-tight tracking-[-0.03em] text-black transition-colors duration-300 hover:border-white/75 hover:bg-white/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:min-h-24 md:px-6 md:py-6 md:text-2xl lg:text-3xl"
               >
                 <span className="max-w-full whitespace-normal wrap-break-word">
                   Preguntas frecuentes
