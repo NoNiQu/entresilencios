@@ -8,5 +8,5 @@ export const siteConfig = {
    * Sustituye estos dos valores antes de publicar las páginas.
    */
   email: "marcos.workstation@gmail.com",
-  url: "https://tu-dominio.com",
+  url: "https://entresilencios.vercel.app/",
 } as const;
