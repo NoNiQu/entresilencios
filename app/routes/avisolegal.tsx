@@ -82,8 +82,8 @@ export default function AvisoLegalPage() {
 
         <p>
           La web recopila y organiza información relacionada con cofradías,
-          procesiones, titulares, horarios, recorridos, acompañamientos
-          musicales, sedes canónicas y otros elementos de interés.
+          procesiones, titulares, horarios, recorridos, sedes canónicas y otros
+          elementos de interés.
         </p>
       </InformationSection>
 
