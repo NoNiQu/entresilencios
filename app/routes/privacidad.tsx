@@ -49,9 +49,31 @@ export default function PrivacidadPage() {
         </p>
 
         <p>
-          Cuando una persona contacta voluntariamente por correo electrónico,
-          podrán tratarse su dirección de correo, el nombre que facilite y el
-          contenido del mensaje.
+          Cuando una persona contacta voluntariamente con el proyecto, podrán
+          tratarse su dirección de correo electrónico, el nombre que facilite y
+          el contenido de la comunicación.
+        </p>
+
+        <p>
+          Cuando una persona, fotógrafo, cofradía, hermandad o entidad colabora
+          facilitando fotografías u otros materiales, podrán tratarse los datos
+          necesarios para identificar su procedencia, gestionar la colaboración
+          y acreditar, cuando corresponda, la autorización para utilizar dichos
+          materiales.
+        </p>
+
+        <p>
+          Cuando proceda, el nombre, denominación, alias o logotipo facilitado
+          por la persona o entidad colaboradora podrá mostrarse públicamente
+          como crédito o identificación de la procedencia del material.
+        </p>
+
+        <p>
+          La base de datos utilizada por Entre Silencios contiene principalmente
+          información relativa a cofradías, procesiones, titulares, sedes,
+          horarios, recorridos y otros contenidos propios de la guía. No se
+          utiliza para crear cuentas de usuario ni almacenar perfiles de los
+          visitantes.
         </p>
 
         <p>
@@ -83,6 +105,14 @@ export default function PrivacidadPage() {
           <li className="flex gap-4">
             <span aria-hidden="true">—</span>
             <span>
+              Gestionar colaboraciones, autorizaciones, procedencia y créditos
+              de fotografías u otros materiales facilitados al proyecto.
+            </span>
+          </li>
+
+          <li className="flex gap-4">
+            <span aria-hidden="true">—</span>
+            <span>
               Mantener la seguridad, disponibilidad y funcionamiento técnico del
               sitio.
             </span>
@@ -96,32 +126,62 @@ export default function PrivacidadPage() {
 
         <p>
           Los datos no se utilizarán para publicidad, elaboración de perfiles
-          comerciales ni envío de comunicaciones promocionales.
+          comerciales, envío de comunicaciones promocionales ni venta de datos a
+          terceros.
         </p>
       </InformationSection>
 
       <InformationSection title="4. Base jurídica">
         <p>
-          La gestión de las comunicaciones se basa en la solicitud realizada
-          voluntariamente por la persona que contacta con el proyecto.
+          La gestión de las comunicaciones recibidas se basa en el interés
+          legítimo del responsable en atender las consultas, correcciones,
+          propuestas o comunicaciones que las personas dirijan voluntariamente
+          al proyecto.
+        </p>
+
+        <p>
+          La gestión de colaboraciones y materiales facilitados al proyecto se
+          basa en la relación establecida voluntariamente con la persona o
+          entidad colaboradora y en el interés legítimo de documentar la
+          procedencia y, cuando corresponda, la autorización de uso de dichos
+          materiales.
         </p>
 
         <p>
           La protección y el mantenimiento técnico de la web se basan en el
-          interés legítimo de garantizar su seguridad y correcto funcionamiento.
+          interés legítimo de garantizar su seguridad, disponibilidad y correcto
+          funcionamiento.
+        </p>
+
+        <p>
+          Cuando resulte necesario, determinados tratamientos también podrán
+          realizarse para cumplir obligaciones legales aplicables.
         </p>
       </InformationSection>
 
       <InformationSection title="5. Conservación">
         <p>
-          Los mensajes y datos relacionados se conservarán durante el tiempo
-          necesario para responder y gestionar la consulta.
+          Los mensajes y los datos relacionados se conservarán durante el tiempo
+          necesario para gestionar la comunicación y atender las cuestiones
+          planteadas.
         </p>
 
         <p>
-          Posteriormente podrán conservarse durante los plazos necesarios para
-          atender posibles obligaciones o responsabilidades legales. Cuando ya
-          no sean necesarios, serán eliminados.
+          Posteriormente podrán conservarse durante el tiempo necesario para
+          atender posibles obligaciones o responsabilidades legales.
+        </p>
+
+        <p>
+          Cuando una comunicación sirva para acreditar una autorización, cesión,
+          procedencia o colaboración relacionada con fotografías u otros
+          contenidos publicados en Entre Silencios, podrá conservarse mientras
+          resulte necesario acreditar dicha autorización o colaboración.
+        </p>
+
+        <p>
+          Cuando los datos dejen de ser necesarios para las finalidades para las
+          que fueron tratados y no exista una obligación que justifique su
+          conservación, serán eliminados.
         </p>
       </InformationSection>
 
@@ -139,6 +199,13 @@ export default function PrivacidadPage() {
         </p>
 
         <p>
+          Cuando corresponda y exista una colaboración relacionada con
+          fotografías u otros materiales, el nombre, denominación, alias o
+          logotipo facilitado podrá mostrarse públicamente como crédito de
+          autoría, procedencia o colaboración.
+        </p>
+
+        <p>
           También podrán comunicarse datos cuando exista una obligación legal o
           un requerimiento válido de una autoridad competente.
         </p>
@@ -151,9 +218,9 @@ export default function PrivacidadPage() {
         </p>
 
         <p>
-          Cuando resulte aplicable, esos tratamientos deberán realizarse
-          mediante las garantías reconocidas por la normativa de protección de
-          datos y las condiciones contractuales ofrecidas por cada proveedor.
+          Cuando resulte aplicable, esos tratamientos se realizarán mediante las
+          garantías reconocidas por la normativa de protección de datos y las
+          condiciones contractuales ofrecidas por cada proveedor.
         </p>
       </InformationSection>
 
@@ -165,8 +232,8 @@ export default function PrivacidadPage() {
         </p>
 
         <p>
-          También puedes retirar el consentimiento otorgado, sin que ello afecte
-          a la licitud del tratamiento realizado anteriormente.
+          También puedes solicitar la portabilidad de tus datos cuando concurran
+          los requisitos establecidos por la normativa.
         </p>
 
         <p>
@@ -208,7 +275,7 @@ export default function PrivacidadPage() {
           aplicables.
         </p>
 
-        <p>Última actualización: agosto de 2026.</p>
+        <p>Última actualización: septiembre de 2026.</p>
       </InformationSection>
     </InformationPageLayout>
   );
