@@ -41,7 +41,7 @@ export function SemanaSantaToledo() {
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450 ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <span
@@ -69,7 +69,7 @@ export function SemanaSantaToledo() {
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450 ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <span
@@ -97,7 +97,7 @@ export function SemanaSantaToledo() {
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450 ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <span

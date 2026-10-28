@@ -114,7 +114,7 @@ export function Header() {
       >
         {/* CABECERA DE ESCRITORIO */}
         <div className="hidden lg:block">
-          <div className="mx-auto flex h-45 max-w-1440px items-center justify-between px-45">
+          <div className="mx-auto flex h-45 items-center justify-between px-45">
             {isHomePage ? (
               <div>{desktopLogo}</div>
             ) : (

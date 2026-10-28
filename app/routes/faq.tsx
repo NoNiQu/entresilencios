@@ -67,7 +67,7 @@ export default function FaqPage() {
         <div className="border-b border-black/15 pb-14 lg:pb-20">
           <h2
             id="about-faq"
-            className="text-5xl font-normal text-center tracking-tight text-black lg:text-10xl"
+            className="text-5xl font-normal text-center tracking-tight text-black"
           >
             ¿Qué es Entre Silencios?
           </h2>

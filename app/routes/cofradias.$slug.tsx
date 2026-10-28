@@ -98,7 +98,7 @@ function SocialIcon({ tipo }: { tipo: string }) {
       >
         <rect x="3" y="3" width="18" height="18" rx="5" />
         <circle cx="12" cy="12" r="4" />
-        <circle x="17.5" y="6.5" r="1" fill="currentColor" stroke="none" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
       </svg>
     );
   }
@@ -185,7 +185,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
 
     document.body.style.overflow = "hidden";
 
-    requestAnimationFrame(() => {
+    const focusFrameId = requestAnimationFrame(() => {
       closeDialogButtonRef.current?.focus();
     });
 
@@ -225,6 +225,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      cancelAnimationFrame(focusFrameId);
       document.body.style.overflow = overflowAnterior;
       document.removeEventListener("keydown", handleKeyDown);
 
