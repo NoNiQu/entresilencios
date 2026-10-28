@@ -95,19 +95,19 @@ export function SemanaSantaCountdown({ countdown }: SemanaSantaCountdownProps) {
 
           {/* Glorias */}
           <div className="mt-12 border-t border-white/15 pt-10 md:mt-14 md:pt-10">
-            <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-8">
-              <div className="text-center md:mx-auto md:max-w-xl md:text-left">
+            <div className="grid gap-8 md:gap-10 xl:grid-cols-2 xl:items-center xl:gap-8">
+              <div className="min-w-0 text-center md:mx-auto md:max-w-xl xl:text-left">
                 <p className="font-normal tracking-[-0.03em] text-white">
-                  <span className="block whitespace-nowrap text-[1.85rem] leading-[1.05] md:text-6xl md:leading-[0.98]">
+                  <span className="block whitespace-nowrap text-[1.85rem] leading-[1.05] md:whitespace-normal md:text-5xl md:leading-[0.98] xl:text-6xl">
                     Las glorias toledanas
                   </span>
 
-                  <span className="mt-1 block text-[1.85rem] leading-[1.05] md:mt-0 md:text-6xl md:leading-[0.98]">
+                  <span className="mt-1 block text-[1.85rem] leading-[1.05] md:mt-0 md:text-5xl md:leading-[0.98] xl:text-6xl">
                     no descansan
                   </span>
                 </p>
 
-                <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-white/70 md:mx-0 md:mt-5 md:max-w-none md:text-lg md:leading-8">
+                <p className="mx-auto mt-4 max-w-xs text-sm leading-6 text-white/70 md:mt-5 md:max-w-none md:text-lg md:leading-8 xl:mx-0">
                   Descubre las glorias de Toledo pinchando en el logo
                 </p>
               </div>

@@ -20,8 +20,8 @@ export default function ContactoPage() {
   return (
     <>
       <main className="relative min-h-screen bg-black text-white">
-        <div className="mx-auto flex min-h-screen max-w-360 flex-col justify-start px-5 pb-20 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40 lg:justify-center lg:px-30">
-          <div className="grid w-full gap-16 md:gap-16 lg:grid-cols-2 lg:items-stretch">
+        <div className="mx-auto flex min-h-screen max-w-360 flex-col justify-start px-5 pb-20 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40 xl:justify-center xl:px-30">
+          <div className="grid w-full gap-16 md:gap-16 xl:grid-cols-2 xl:items-stretch">
             {/* Columna izquierda */}
             <section className="mt-9 flex max-w-xl flex-col md:mt-0">
               <h1 className="text-5xl font-normal leading-none tracking-[-0.03em] md:text-7xl">
@@ -99,7 +99,7 @@ export default function ContactoPage() {
             </section>
 
             {/* Tarjeta derecha */}
-            <section className="h-full w-full bg-white px-6 py-8 text-black sm:p-8 md:p-12 lg:p-14">
+            <section className="h-full w-full bg-white px-6 py-8 text-black sm:p-8 md:p-12 xl:p-14">
               <h2 className="text-5xl font-normal leading-none tracking-[-0.03em] md:text-6xl">
                 ¿Hablamos?
               </h2>
