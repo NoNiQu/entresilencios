@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "~/config/site";
 
 export function CopyEmailInline() {
   const [copied, setCopied] = useState(false);
+  const resetTimeoutRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    return () => window.clearTimeout(resetTimeoutRef.current);
+  }, []);
 
   async function handleCopyEmail() {
     try {
       await navigator.clipboard.writeText(siteConfig.email);
       setCopied(true);
 
-      window.setTimeout(() => {
+      window.clearTimeout(resetTimeoutRef.current);
+      resetTimeoutRef.current = window.setTimeout(() => {
         setCopied(false);
       }, 2500);
     } catch {

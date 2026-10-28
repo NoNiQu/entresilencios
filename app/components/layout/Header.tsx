@@ -23,6 +23,23 @@ export function Header() {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 64rem)");
+
+    function closeMenuOnDesktop() {
+      if (desktopQuery.matches) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    closeMenuOnDesktop();
+    desktopQuery.addEventListener("change", closeMenuOnDesktop);
+
+    return () => {
+      desktopQuery.removeEventListener("change", closeMenuOnDesktop);
+    };
+  }, []);
+
   /*
    * Bloquea el scroll mientras el menú móvil está abierto
    * y permite cerrarlo mediante la tecla Escape.
